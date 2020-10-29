@@ -14,7 +14,7 @@ export default function App() {
         <Forecast />
       </div>
       <footer>
-        <a href="/">Open-source code</a> by Jackie Scott
+        <a href="https://github.com/jaxscott/react-weather-app">Open-source code</a> by Jackie Scott
       </footer>
     </div>
   );
