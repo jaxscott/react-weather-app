@@ -1,0 +1,150 @@
+body {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  input {
+    border: none;
+    border-radius: 7px;
+    font-weight: 100;
+    padding: 5px;
+    width: 300px;
+  }
+  
+  .weather-app {
+    display: block;
+    width: 700px;
+    margin: 0 auto;
+    margin-top: 25px;
+    padding: 45px;
+    background-color: #8ec5fc;
+    background-image: linear-gradient(130deg, #f1f7fd 0%, #8ec5fc 100%);
+    border-radius: 30px;
+    box-shadow: 5px 5px 5px rgb(126, 126, 126);
+  }
+  
+  .search-bar {
+    display: flex;
+    padding-bottom: 10px;
+    justify-content: center;
+    padding: 5px;
+    margin: 0 auto;
+  }
+  
+  #pinpoint {
+    border: none;
+    padding: 0px 10px;
+    color: green;
+    font-size: 20px;
+    border-radius: 7px;
+    background: transparent;
+  }
+  
+  #search-button {
+    background: rgb(7, 112, 248);
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px 10px;
+    margin-left: 3px;
+  }
+  
+  .widget {
+    margin: 0 auto;
+    width: 600px;
+    padding: 15px;
+  }
+  
+  .date,
+  .time {
+    text-align: center;
+  }
+  
+  .current-city,
+  .weather-icon,
+  .weather-details {
+    margin: 0;
+    align-self: center;
+  }
+  
+  .current-city {
+    padding-left: 30px;
+  }
+  
+  .weather-details {
+    padding-left: 40px;
+    line-height: 30px;
+  }
+  
+  .weather-icon {
+    text-align: center;
+  }
+  
+  .conversion {
+    padding-top: 15px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    line-height: 35px;
+    margin-bottom: 0;
+    font-weight: 700;
+  }
+  
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    list-style-type: none;
+  }
+  
+  li,
+  p,
+  h5 {
+    font-weight: 300;
+  }
+  
+  .icon {
+    font-size: 20px;
+  }
+  
+  #forecast img {
+    width: 50px;
+  }
+  
+  .weather-details {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 5px;
+    padding-bottom: 15px;
+  }
+  
+  #condition {
+    text-transform: capitalize;
+    line-height: 30px;
+  }
+  
+  #current-temp {
+    font-size: 55px;
+  }
+  
+  .forecast {
+    width: 600px;
+    padding: 15px 15px 0 15px;
+    text-align: center;
+    justify-content: space-evenly;
+  }
+  
+  h5 {
+    font-size: 18px;
+    font-weight: 300;
+  }
+  
+  footer {
+    display: block;
+    font-size: 12px;
+    padding: 20px 0px;
+    text-align: center;
+  }
+  
