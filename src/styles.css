@@ -48,7 +48,7 @@ body {
     margin-left: 3px;
   }
   
-  .widget {
+  .weather-info {
     margin: 0 auto;
     width: 600px;
     padding: 15px;
@@ -59,7 +59,7 @@ body {
     text-align: center;
   }
   
-  .current-city,
+  .city,
   .weather-icon,
   .weather-details {
     margin: 0;
@@ -88,6 +88,7 @@ body {
     line-height: 35px;
     margin-bottom: 0;
     font-weight: 700;
+    text-align: start;
   }
   
   ul {
@@ -97,6 +98,7 @@ body {
   
   li {
     list-style-type: none;
+    text-align: start;
   }
   
   li,
@@ -120,12 +122,12 @@ body {
     padding-bottom: 15px;
   }
   
-  #condition {
+  .condition {
     text-transform: capitalize;
     line-height: 30px;
   }
   
-  #current-temp {
+  .temp {
     font-size: 55px;
   }
   

@@ -1,60 +1,33 @@
-import React from "react";
+import React, {useState} from "react";
+import axios from "axios";
+import ForecastPreview from "./ForecastPreview";
 import "./styles.css";
 
-export default function Forecast() {
-  let forecastData = {
-    icon: "http://openweathermap.org/img/wn/01d@2x.png",
-    maxtemp: "90º",
-    mintemp: "60º"
-  };
+export default function Forecast(props) {
+  const [loaded, setLoaded] = useState(false);
+  const [forecast, setForecast] = useState(null);
+
+  function displayForecast(response) {
+    setForecast(response.data);
+    setLoaded(true);
+  }
+
+if (loaded && props.city === forecast.city.name) {
+  console.log(forecast.list[0]);
   return (
     <div className="container forecast">
       <div className="row row-cols-5" id="forecast">
-        <div className="col">
-          <h5>Monday</h5>
-          <img src={forecastData.icon} alt="Sunny" />
-          <p>
-            <strong id="maxtemp">{forecastData.maxtemp}</strong> /{" "}
-            <span id="mintemp">{forecastData.mintemp}</span>
-          </p>
-        </div>
-
-        <div className="col">
-          <h5>Tuesday</h5>
-          <img src={forecastData.icon} alt="Sunny" />
-          <p>
-            <strong id="maxtemp">{forecastData.maxtemp}</strong> /{" "}
-            <span id="mintemp">{forecastData.mintemp}</span>
-          </p>
-        </div>
-
-        <div className="col">
-          <h5>Wednesday</h5>
-          <img src={forecastData.icon} alt="Sunny" />
-          <p>
-            <strong id="maxtemp">{forecastData.maxtemp}</strong> /{" "}
-            <span id="mintemp">{forecastData.mintemp}</span>
-          </p>
-        </div>
-
-        <div className="col">
-          <h5>Thursday</h5>
-          <img src={forecastData.icon} alt="Sunny" />
-          <p>
-            <strong id="maxtemp">{forecastData.maxtemp}</strong> /{" "}
-            <span id="mintemp">{forecastData.mintemp}</span>
-          </p>
-        </div>
-
-        <div className="col">
-          <h5>Friday</h5>
-          <img src={forecastData.icon} alt="Sunny" />
-          <p>
-            <strong id="maxtemp">{forecastData.maxtemp}</strong> /{" "}
-            <span id="mintemp">{forecastData.mintemp}</span>
-          </p>
-        </div>
+        {forecast.list.slice(0, 5).map(function (forecastItem) {
+          return <ForecastPreview data={forecast.list[0]} />;
+        })}
       </div>
     </div>
   );
+} else {
+  let apiKey = "681353d6f7c98879b8cafb97e5874854";
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${props.city}&appid=${apiKey}&units=metric`;
+  axios.get(forecastUrl).then(displayForecast)
+
+  return null;
+}
 }

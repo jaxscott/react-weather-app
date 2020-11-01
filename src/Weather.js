@@ -1,64 +1,74 @@
-import React from "react";
+import React, { useState } from "react";
+import WeatherInfo from "./WeatherInfo";
+import axios from "axios";
+import Loader from 'react-loader-spinner';
+import Forecast from "./Forecast";
 import "./styles.css";
 
-export default function Widget() {
-  let data = {
-    date: "Wednesday, October 28, 2020",
-    time: "7:55 PM",
-    city: "Los Angeles",
-    condition: "Clear",
-    currentTemp: "67º",
-    humidity: "Humidity: 25%",
-    windspeed: "Wind Speed: 2.3m/s"
-  };
-  return (
-    <div className="container widget">
-      <div className="row date-time">
-        <div className="col date">
-          <p id="current-date">{data.date}</p>
-        </div>
-        <div className="col time">
-          <p>
-            Last Updated: <span id="current-time">{data.time}</span>
-          </p>
-        </div>
-      </div>
-      <div className="row align-items-center">
-        <div className="col current-city">
-          <h1 id="current-city">{data.city}</h1>
-          <ul>
-            <li id="condition">{data.condition}</li>
-            <li id="current-temp">{data.currentTemp}</li>
-          </ul>
-        </div>
-        <div className="col-md-auto weather-icon">
-          <img
-            src="http://openweathermap.org/img/wn/02d@2x.png"
-            alt="Cloudy"
-            className="icon"
-            id="icon"
-          />
-        </div>
-        <div className="col weather-details">
-          <ul>
-            <li id="humidity">{data.humidity}</li>
-            <li id="windspeed">{data.windspeed}</li>
-          </ul>
-
-          <div className="conversion">
-            <div className="btn-group btn-group-toggle" data-toggle="buttons">
-              <label className="btn btn-warning active" id="celsius">
-                <input type="radio" name="options" />
-                ºC
-              </label>
-              <label className="btn btn-warning" id="fahrenheit">
-                <input type="radio" name="options" />
-                ºF
-              </label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+export default function Weather(props) {
+  
+  const [weatherData, setWeatherData] = useState({ loaded : false });
+  let [city, setCity] = useState(props.defaultCity);
+  
+  function handleResponse(response) {
+    setWeatherData({
+      loaded: true,
+      date: new Date(response.data.dt * 1000),
+      city: response.data.name,
+      description: response.data.weather[0].description,
+      temperature: Math.round(response.data.main.temp), 
+      humidity: response.data.main.humidity,
+      wind: response.data.wind.speed
+    });
+    }
+  
+  function search() {
+    let apiKey = "681353d6f7c98879b8cafb97e5874854";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
 }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityInput(event) {
+    setCity(event.target.value);
+  }
+ 
+
+if (weatherData.loaded) {
+    return (
+      <div className="weather-app">
+    <div className="search-bar">
+      <button id="pinpoint">
+        <i className="fas fa-map-marker-alt" alt="Current Location"></i>
+      </button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="search/text"
+          id="city-search"
+          name="city-search"
+          autoComplete="off"
+          autoFocus="on"
+          placeholder="Enter a City..."
+          onChange={handleCityInput}
+        />
+
+        <button type="submit" value="search" id="search-button">
+          <i className="fas fa-search"></i>
+        </button>
+      </form>
+    </div>
+    <WeatherInfo data={weatherData} />
+    <Forecast city={weatherData.city} />
+    </div>
+  )
+} else {
+  search();
+  return (<div className="loading">
+<Loader type="ThreeDots" color="#00BFFF" height={80} width={80} />
+</div>)
+}
+  }
