@@ -28,7 +28,32 @@ export default function FormattedDate(props) {
       let month = months[props.date.getMonth()];
       let date = props.date.getDate();
       let year = props.date.getFullYear();
-      return (<div>
-        ${day}, ${month} ${date}, ${year}
-      </div>);
+
+      let hour = props.date.getHours();
+      let minute = props.date.getMinutes();
+      if (minute < 10) {
+        minute = `0${minute}`;
+      }  
+      let meridiem = "AM";
+      if (hour >= 12) {
+        hour = hour - 12;
+        meridiem = "PM";
+      }
+      if (hour === 0) {
+        hour = 12
+      }
+
+
+      return (<div className="row date-time"> 
+      <div className="col date">
+      {day}, {month} {date}, {year}
+      </div>
+      <div className="col time">
+      Last Updated: {hour}:{minute} {meridiem}
+      </div>
+    </div>);
 }
+
+
+
+      

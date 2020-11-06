@@ -9,16 +9,16 @@ export default function ForecastPreview(props) {
     }
 
     function temperature() {
-        let maxtemp = Math.round(props.data.list[0].main.temp_max);
-        let mintemp = Math.round(props.data.list[0].main.temp_min);
+        let maxtemp = Math.round(props.data.main.temp_max);
+        let mintemp = Math.round(props.data.main.temp_min);
 
-        return (`<strong>${maxtemp}º</strong> / ${mintemp}º`)
+        return (<div><strong>{maxtemp}º</strong> / {mintemp}º</div> )
     }
 
     return (
-    <div className="col">
-          <h5>{hours()}</h5>
-          <WeatherIcon code={props.data.weather[0].icon} />
-          <p>{temperature()}</p>
+        <div className="col forecast-preview">
+          <strong>{hours()}</strong><br />
+          <WeatherIcon code={props.data.weather[0].icon} /><br />
+          {temperature()}
         </div>
     )}

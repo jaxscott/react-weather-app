@@ -1,6 +1,6 @@
-import React, {useState} from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import ForecastPreview from "./ForecastPreview";
+import axios from "axios";
 import "./styles.css";
 
 export default function Forecast(props) {
@@ -17,9 +17,11 @@ if (loaded && props.city === forecast.city.name) {
   return (
     <div className="container forecast">
       <div className="row row-cols-5" id="forecast">
-        {forecast.list.slice(0, 5).map(function (forecastItem) {
-          return <ForecastPreview data={forecast.list[0]} />;
-        })}
+        <ForecastPreview data={forecast.list[0]} />
+        <ForecastPreview data={forecast.list[1]} />
+        <ForecastPreview data={forecast.list[2]} />
+        <ForecastPreview data={forecast.list[3]} />
+        <ForecastPreview data={forecast.list[4]} />
       </div>
     </div>
   );
