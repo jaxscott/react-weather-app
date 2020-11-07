@@ -27,6 +27,10 @@ export default function Weather(props) {
     search();
   }
 
+  function errorFunction(error) {
+    alert ("Please enter a valid city. 🌎")
+  }
+
   function handleCityInput(event) {
     setCity(event.target.value);
   }
@@ -34,7 +38,7 @@ export default function Weather(props) {
   function search() {
     let apiKey = "538fc872aa705c57fa7d84cb5eac6a65";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
+    axios.get(apiUrl).then(handleResponse).catch(errorFunction);
 }
 
 if (weatherData.ready) {
@@ -50,6 +54,7 @@ if (weatherData.ready) {
           id="city-search"
           name="city-search"
           autoComplete="off"
+          autoFocus="off"
           placeholder="Enter a City..."
           onChange={handleCityInput}
         />
@@ -59,12 +64,12 @@ if (weatherData.ready) {
       </form>
     </div>
     <WeatherInfo data={weatherData} />
+    <hr />
     <Forecast city={weatherData.city} />
     </div>
-  )
-} else {
+  )} else {
   search();
+  return (<div>
   <Loader type="Oval" color="purple" height={80} width={80} className="loader" />
   </div>);
-}
-  }
+}}

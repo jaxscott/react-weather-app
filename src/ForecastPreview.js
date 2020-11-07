@@ -23,7 +23,7 @@ export default function ForecastPreview(props) {
 
     return (
         <div className="col forecast-preview">
-          <b>{hours()}</b><br />
+          <strong>{hours()}</strong><br />
           <WeatherSvg code={props.data.weather[0].icon} /><br />
           {temperature()}
         </div>

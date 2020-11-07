@@ -43,8 +43,8 @@ export default function FormattedDate(props) {
         hour = 12
       }
 
-
-      return (<div className="row date-time"> 
+      return (
+      <div className="row date-time"> 
       <div className="col date">
       {day}, {month} {date}, {year}
       </div>

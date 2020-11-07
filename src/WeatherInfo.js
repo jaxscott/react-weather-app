@@ -3,10 +3,7 @@ import FormattedDate from "./FormattedDate";
 import WeatherSvg from "./WeatherSvg";
 import TemperatureConversion from "./TemperatureConversion";
 
-
-
 export default function WeatherInfo(props) {
-
     return (
     <div className="container weather-info">
       <FormattedDate date={props.data.date} />
