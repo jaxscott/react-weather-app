@@ -24,11 +24,11 @@ export default function WeatherConversion(props) {
       <h1>{Math.round(props.celsius)}</h1>
           <div className="conversion">
             <div className="btn-group btn-group-toggle" data-toggle="buttons">
-              <label className="btn btn-secondary active">
+              <label className="btn btn-info active">
                 <input type="radio" name="options" checked />
                 ºC
               </label>
-              <label className="btn btn-secondary" onClick={showFahrenheit}>
+              <label className="btn btn-info" onClick={showFahrenheit}>
                 <input type="radio" name="options" />
                 ºF
               </label>
@@ -42,11 +42,11 @@ export default function WeatherConversion(props) {
       <h1>{Math.round(fahrenheit())}</h1>
           <div className="conversion">
             <div className="btn-group btn-group-toggle" data-toggle="buttons">
-              <label className="btn btn-secondary" onClick={showCelsius}>
+              <label className="btn btn-info" onClick={showCelsius}>
                 <input type="radio" name="options" />
                 ºC
               </label>
-              <label className="btn btn-secondary active" >
+              <label className="btn btn-info active" >
                 <input type="radio" name="options" checked />
                 ºF
               </label>

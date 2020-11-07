@@ -1,10 +1,16 @@
 import React from "react";
-import WeatherIcon from "./WeatherIcon";
+import WeatherSvg from "./WeatherSvg";
 
 export default function ForecastPreview(props) {
     function hours() {
         let date = new Date(props.data.dt * 1000);
         let hours = date.getHours();
+        if (hours >= 12) {
+            hours = hours - 12;
+          }
+          if (hours === 0) {
+            hours = 12
+          }
         return `${hours}:00`;
     }
 
@@ -17,8 +23,8 @@ export default function ForecastPreview(props) {
 
     return (
         <div className="col forecast-preview">
-          <strong>{hours()}</strong><br />
-          <WeatherIcon code={props.data.weather[0].icon} /><br />
+          <b>{hours()}</b><br />
+          <WeatherSvg code={props.data.weather[0].icon} /><br />
           {temperature()}
         </div>
     )}
