@@ -32,7 +32,7 @@ export default function Weather(props) {
   }
  
   function search() {
-    let apiKey = "7538fc872aa705c57fa7d84cb5eac6a65";
+    let apiKey = "538fc872aa705c57fa7d84cb5eac6a65";
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
 }
@@ -64,26 +64,6 @@ if (weatherData.ready) {
   )
 } else {
   search();
-  return (<div className="weather-app">
-  <div className="search-bar">
-    <button className="pinpoint">
-      <i className="fas fa-map-marker-alt" alt="Current Location"></i>
-    </button>
-    <form onSubmit={handleSubmit}>
-      <input
-        type="search/text"
-        id="city-search"
-        name="city-search"
-        autoComplete="off"
-        placeholder="Enter a City..."
-        onChange={handleCityInput}
-      />
-
-      <button type="submit" value="search" className="search-button">
-        <i className="fas fa-search"></i>
-      </button>
-    </form>
-  </div>
   <Loader type="Oval" color="purple" height={80} width={80} className="loader" />
   </div>);
 }
