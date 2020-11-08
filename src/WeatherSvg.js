@@ -16,8 +16,8 @@ export default function WeatherSvg(props) {
         "10n": "/images/rain.svg",
         "11d": "/images/thunderstorm.svg",
         "11n": "/images/thunderstorm.svg",
-        "13d": "/images/snow_sun.svg",
-        "13n": "/images/snow_moon.svg",
+        "13d": "/images/snow.svg",
+        "13n": "/images/snow.svg",
         "15d": "/images/mist.svg",
         "15n": "/images/mist.svg",
       }

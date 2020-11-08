@@ -49,7 +49,7 @@ export default function FormattedDate(props) {
       {day}, {month} {date}, {year}
       </div>
       <div className="col time">
-      Last Updated: {hour}:{minute} {meridiem}
+      Last Updated- {hour}:{minute} {meridiem}
       </div>
     </div>);
 }
